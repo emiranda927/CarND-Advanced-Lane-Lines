@@ -44,7 +44,6 @@ ret, corners = cv2.findChessboardCorners(gray,(nx,ny),None)
 !["Corners"](./output_images/draw_corners/calibration18.jpg.png)
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function (housed in the perspective transform method) and obtained this result: 
-
 !["Undistorted Calibration Image"](https://github.com/emiranda927/CarND-Advanced-Lane-Lines/blob/master/output_images/Undistorted%20Images/calibration2.jpg.png)
 
 ### Pipeline (single images)
@@ -52,7 +51,6 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I have a distortion corrected image next to one of the test images where you can see the difference around the edge of the image:
-
 ![](./output_images/Undistorted%20Images/figure_2.png)
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
@@ -71,7 +69,6 @@ I used a combination of color and gradient thresholds to generate a binary image
             ] = 1  
 ```
 Here's an example of my output for this step (note: the image has perspective transform already applied):
-
 ![](./output_images/BirdsEye/figure_4.png)
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -84,17 +81,13 @@ src = np.float32([[img.shape[1]*(.5 - mid/2), img.shape[0]*height], [img.shape[1
 dst = np.float32([[offset, 0], [img_size[0] - offset, 0], [img_size[0] - offset, img_size[1]], [offset, img_size[1]]])
 ```
 Here is an example of a transformed image:
-
 ![](./output_images/Warped%20Images/figure_1.png)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 I used the perspective transformed image to generate binary images through the `threshold()` function, which only took an image as an argument. The binary image was fid through the function `sliding_window_fit()` which uses a sliding window to detect activated binary pixels in a certain range and declaring them a lane line based on margins and number of pixels within a window. Once the activated pixels are selected, a secondary order polynomial  is fit with `np.polyfit`. This code is located in cell 5 of the IPython Notebook. Here is an example of the output from this function:
-
 ![](./output_images/fitted%20lane%20images/figure_5.png)
-
 Once the line has been detected and fit, I implemented a `skip_fit()` function that searches for lane pixels in a certain area based on the last detection. This speeds up the lane finding process. An example of the search area using `skip_fit()` can be seen below:
-
 ![](./output_images/skip%20fit%20images/figure_4.png)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
@@ -104,9 +97,7 @@ I defined a `curvature` function that calculates the lane line curvature of each
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in cell 6 in the function `process_image()`.  Here is an example of my result on a test image:
-
 ![](./output_images/mapped_lane.png)
-
 ---
 
 ### Pipeline (video)
