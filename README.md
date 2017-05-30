@@ -89,7 +89,6 @@ I used the perspective transformed image to generate binary images through the `
 ![](./output_images/fitted%20lane%20images/figure_5.png)
 Once the line has been detected and fit, I implemented a `skip_fit()` function that searches for lane pixels in a certain area based on the last detection. This speeds up the lane finding process. An example of the search area using `skip_fit()` can be seen below:
 ![](./output_images/skip%20fit%20images/figure_4.png)
-
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 I defined a `curvature` function that calculates the lane line curvature of each polynomial fit passed into the function. This code is located at the bottom of cell 5. I assumed the vehicle camera was mounted at center.
