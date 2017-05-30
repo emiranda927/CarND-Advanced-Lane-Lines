@@ -97,7 +97,9 @@ I defined a `curvature` function that calculates the lane line curvature of each
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in cell 6 in the function `process_image()`.  Here is an example of my result on a test image:
+
 ![](./output_images/mapped_lane.png)
+
 ---
 
 ### Pipeline (video)
