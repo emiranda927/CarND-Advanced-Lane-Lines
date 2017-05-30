@@ -45,7 +45,7 @@ ret, corners = cv2.findChessboardCorners(gray,(nx,ny),None)
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function (housed in the perspective transform method) and obtained this result: 
 
-!["Undistorted Calibration Image"](./output_images/Undistorted Images/calibration2.jpg.png)
+!["Undistorted Calibration Image"](https://github.com/emiranda927/CarND-Advanced-Lane-Lines/blob/master/output_images/Undistorted%20Images/calibration2.jpg.png)
 
 ### Pipeline (single images)
 
