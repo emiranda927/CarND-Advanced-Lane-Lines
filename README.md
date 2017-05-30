@@ -53,7 +53,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 To demonstrate this step, I have a distortion corrected image next to one of the test images where you can see the difference around the edge of the image:
 
-![](./output_images/Undistorted Images/figure_2.png)
+![](./output_images/Undistorted%20Images/figure_2.png)
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
