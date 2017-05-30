@@ -85,17 +85,17 @@ dst = np.float32([[offset, 0], [img_size[0] - offset, 0], [img_size[0] - offset,
 ```
 Here is an example of a transformed image:
 
-![](./output_images/Warped Images/figure_1.png)
+![](./output_images/Warped%20Images/figure_1.png)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 I used the perspective transformed image to generate binary images through the `threshold()` function, which only took an image as an argument. The binary image was fid through the function `sliding_window_fit()` which uses a sliding window to detect activated binary pixels in a certain range and declaring them a lane line based on margins and number of pixels within a window. Once the activated pixels are selected, a secondary order polynomial  is fit with `np.polyfit`. This code is located in cell 5 of the IPython Notebook. Here is an example of the output from this function:
 
-![](./output_images/fitted lane images/figure_5.png)
+![](./output_images/fitted%20lane%20images/figure_5.png)
 
 Once the line has been detected and fit, I implemented a `skip_fit()` function that searches for lane pixels in a certain area based on the last detection. This speeds up the lane finding process. An example of the search area using `skip_fit()` can be seen below:
 
-![](./output_images/skip fit images/figure_4.png)
+![](./output_images/skip%20fit%20images/figure_4.png)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
