@@ -119,6 +119,8 @@ def offset(left_fitx, right_fitx):
 ```
 Converting the difference between the calculated midpoint and camera center from pixel space to real world space provided the offset value used in the video output seen below.
 
+One interesting observation about the offset values is that the driver in the video stream seemed to bias his driving to the left of the lane more often than the right side of the lane. I know based on my experience working for an automotive OEM that this phenomenon is quite common and left line bias is something that must be considered when desiging a self-driving car system!
+
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in cell 6 in the function `process_image()`.  Here is an example of my result on a test image:
