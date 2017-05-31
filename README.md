@@ -99,13 +99,31 @@ Once the line has been detected and fit, I implemented a `skip_fit()` function t
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I defined a `curvature` function that calculates the lane line curvature of each polynomial fit passed into the function. This code is located at the bottom of cell 5. I assumed the vehicle camera was mounted at center.
+I defined a `curvature` function that calculates the lane line curvature of each polynomial fit passed into the function. This code is located at the bottom of cell 5. In order to calculate the vehicle position with relation to center, I defined the `offset` function which used the averaged polynomial fit x-values, `bestx`, and extracted the line fit x-position at the bottom of each frame. Using these pixel positions, I calculated the midpoint between the left and right fit, and compared it with the camera center 0. 
+```python
+def offset(left_fitx, right_fitx):
+    pixel_center = 1280/2
+    ym_per_pix = 30/720 # meters per pixel in y dimension
+    xm_per_pix = 3.7/700 # meters per pixel in x dimension
+    
+    pixel_left = left_fitx[-1]
+    pixel_right = right_fitx[-1]
+    pixel_width = pixel_right-pixel_left
+    
+    pixel_midpoint =(pixel_left+pixel_right)/2
+    pixel_offset = (pixel_center-pixel_midpoint)
+    
+    offset = pixel_offset*xm_per_pix
+
+    return offset
+```
+Converting the difference between the calculated midpoint and camera center from pixel space to real world space provided the offset value used in the video output seen below.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in cell 6 in the function `process_image()`.  Here is an example of my result on a test image:
 
-![](./output_images/mapped_lane.png)
+![](./output_images/mapped_lane.png) | ![](./output_images/straight_lane.png)
 
 ---
 
